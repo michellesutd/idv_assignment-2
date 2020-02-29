@@ -1,13 +1,13 @@
 //label position variables
-let yMarginTop = 25
-let yMarginBottom = 105
-let categoryXPosition = 14
+let yMarginTop = 25;
+let yMarginBottom = 105;
+let categoryXPosition = 14;
 
 //bar variables
-let barHeight = 8
+let barHeight = 8;
 
 //select the svg element
-let svg = document.getElementById('chart')
+let svg = document.getElementById('chart');
 
 let data = [
   {
@@ -40,4 +40,17 @@ let data = [
 for (let index = 0; index < data.length; index++) {
   let item = data[index];
   let yPosition = yMarginTop + (index * yMarginBottom);
+
+  // create a '<g>' element to hold children
+  let itemGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+
+  //category element
+  let categoryElement = document.createElementNS(
+    'http://www.w3.org/2000/svg',
+    'text'
+  );
+  categoryElement.setAttribute('x', categoryXPosition);
+  categoryElement.setAttribute('y', yPosition);
+  categoryElement.textContent = item.category;
+  itemGroup.appendChild(categoryElement);
 }
