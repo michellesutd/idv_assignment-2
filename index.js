@@ -96,3 +96,17 @@ let textGenerator = function textGenerator(xPos, yPos, label) {
   text.textContent = label;
   return text;
 };
+
+//rectangle or bar chart generator
+let RectangleGenerator = function RectangleGenerator(groupBlock) {
+  let g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  g.appendChild(textGenerator(groupBlock['course']['coords'][0], groupBlock['course']['coords'][1], groupBlock['course']['name']));
+  g.appendChild(textGenerator(groupBlock['students']['coords'][0], groupBlock['students']['coords'][1], groupBlock['students']['no']));
+  let rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+  rect.setAttribute('x', groupBlock['shape']['coords'][0]);
+  rect.setAttribute('y', groupBlock['shape']['coords'][1]);
+  rect.setAttribute('height', chartHeight);
+  rect.setAttribute('width', groupBlock['shape']['width']);
+  g.appendChild(rect);
+  return g;
+};
