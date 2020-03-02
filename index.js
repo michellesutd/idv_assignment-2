@@ -124,3 +124,8 @@ let CurvedPathGenerator = function CurvedPathGenerator(groupBlock) {
   g.appendChild(path);
   return g;
 };
+
+//decides which to generates beased on group type
+let GroupGenerator = function GroupGenerator(groupBlock) {
+  return groupBlock['shape']['type'] === 'rect' ? RectangleGenerator(groupBlock) : CurvedPathGenerator(groupBlock);
+};
