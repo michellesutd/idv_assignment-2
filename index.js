@@ -88,3 +88,11 @@ let data = [{
     'width': [369, 220]
   }
 }];
+
+let textGenerator = function textGenerator(xPos, yPos, label) {
+  let text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  text.setAttribute('x', xPos);
+  text.setAttribute('y', yPos);
+  text.textContent = label;
+  return text;
+};
