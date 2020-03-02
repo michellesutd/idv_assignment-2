@@ -134,3 +134,8 @@ let GroupGenerator = function GroupGenerator(groupBlock) {
 data.forEach(function (group) {
   chart.appendChild(GroupGenerator(group));
 });
+
+//generates hover style for bar chart
+let chartStyle = document.createElement("style");
+chartStyle.innerHTML = "rect:hover { fill:white; } \n        path:hover {\n            fill: none;\n            stroke: white;\n            stroke-width: 8;\n        }\n";
+document.getElementsByTagName("head")[0].appendChild(chartStyle);
