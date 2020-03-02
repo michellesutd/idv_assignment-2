@@ -110,3 +110,17 @@ let RectangleGenerator = function RectangleGenerator(groupBlock) {
   g.appendChild(rect);
   return g;
 };
+
+// generates curved path bars
+let CurvedPathGenerator = function CurvedPathGenerator(groupBlock) {
+  let g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  g.appendChild(textGenerator(groupBlock['course']['coords'][0], groupBlock['course']['coords'][1], groupBlock['course']['name']));
+  g.appendChild(textGenerator(groupBlock['students']['coords'][0], groupBlock['students']['coords'][1], groupBlock['students']['no']));
+  let path = document.createElementNS("http://www.w3.org/2000/svg", 'path');
+  path.setAttribute('d', "M ".concat(groupBlock['shape']['coords'][0], " ").concat(groupBlock['shape']['coords'][1], " h").concat(groupBlock['shape']['width'][0], " a10 10 0 0,1, 0, 68 H58 a10 10 0 0,0, 0, 68 h").concat(groupBlock['shape']['width'][1]));
+  path.setAttribute('fill', 'none');
+  path.setAttribute('stroke', 'rgb(179, 156, 136)');
+  path.setAttribute('stroke-width', chartHeight);
+  g.appendChild(path);
+  return g;
+};
