@@ -129,3 +129,8 @@ let CurvedPathGenerator = function CurvedPathGenerator(groupBlock) {
 let GroupGenerator = function GroupGenerator(groupBlock) {
   return groupBlock['shape']['type'] === 'rect' ? RectangleGenerator(groupBlock) : CurvedPathGenerator(groupBlock);
 };
+
+//loops through data array
+data.forEach(function (group) {
+  chart.appendChild(GroupGenerator(group));
+});
